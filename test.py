@@ -33,6 +33,23 @@ class Test(unittest.TestCase):
 		result = main('abbaabaaaabaabaaab', 'aabaa', '@')
 		self.assertEqual(result, 3)
 
+	def test_main_negative(self):
+		result = main('abbaabaaaabaabaaab', 'aafaa', '@')
+		self.assertEqual(result, -1)
+
+	def test_main_empty_needle(self):
+		result = main('abbaabaaaabaabaaab', '', '@')
+		self.assertEqual(result, -1)
+
+	def test_main_empty_haystack(self):
+		result = main('', 'aabaa', '@')
+		self.assertEqual(result, -1)
+
+	def test_main_needle_longer_than_haystack(self):
+		result = main('aba', 'aabaa', '@')
+		self.assertEqual(result, -1)
+
+
 
 if __name__ == "__main__":
 	unittest.main()

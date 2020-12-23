@@ -31,6 +31,7 @@ def prefix(string):
 
     for i in range(1, len(string)):
         k = matches_num_list[i-1]
+
         while True:
             if string[i] == string[k]:
                matches_num_list[i] = k + 1 
@@ -51,8 +52,10 @@ def delimiter_in_strings(haystack, needle, delimiter):
 
 
 def main(haystack, needle, delimiter):
-    result = -1
 
+    if (len(needle) == 0):
+        return -1
+    
     if delimiter_in_strings(haystack, needle, delimiter):
         sys.exit('choose other delimiter, which is missing in the strings')
 
@@ -65,7 +68,7 @@ def main(haystack, needle, delimiter):
             return idx - 2 *len(needle)
         idx += 1
 
-    return result
+    return -1
 
 
 if __name__=="__main__":
